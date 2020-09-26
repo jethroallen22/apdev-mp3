@@ -1,10 +1,10 @@
 {
   "name": "mp2-3",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +15,9 @@
   "nodemon": "^2.0.4",
   "session": "^0.1.0",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
+    "connect-timeout": "^1.9.0",
     "cookie-parser": "^1.4.5",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
@@ -27,5 +28,18 @@
     "multer": "^1.4.2",
     "multer-gridfs-storage": "^4.2.0",
     "multistream": "^4.0.0"
-  }
+  },
+  "engines": {
+    "node": "12.18.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jethroallen22/MP3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jethroallen22/MP3/issues"
+  },
+  "homepage": "https://github.com/jethroallen22/MP3#readme",
+  "description": ""
 }
