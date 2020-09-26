@@ -70,10 +70,6 @@ if(!req.file){
 
 }
 
-12:24 AM
-
-
-
 User.create(newUser).then((user)=>{
           console.log("successful " + user)
 
