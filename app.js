@@ -14,7 +14,7 @@ const app = express()
 
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb+srv://jethroallen22:09064525156Jama_>@cluster0.r7vqz.gcp.mongodb.net/<helpinghand-db>?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://jethroallen22:09064525156Jama_@cluster0.r7vqz.gcp.mongodb.net/helpinghand-db?retryWrites=true&w=majority", {
     useNewUrlParser: true
  })
 
