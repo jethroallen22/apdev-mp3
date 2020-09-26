@@ -70,25 +70,7 @@ if(!req.file){
 
 }
 
-User.checkUsername(username).then((user)=>{
-  
-  if(user){
-    res.render("register.hbs", {
-      error: "Username already exists"
-  })
-  }
-  else{
-    User.checkEmail(email).then((user)=>{
-  
-      if(user){
-        res.render("register.hbs", {
-          error: "email already exists"
-      })
-      }
-      else{
-        console.log("you are clear 2")
-        
-        User.create(newUser).then((user)=>{
+User.create(newUser).then((user)=>{
           console.log("successful " + user)
 
           console.log(user.businessName)
@@ -102,11 +84,11 @@ User.checkUsername(username).then((user)=>{
             req.session.prods = []
 
             if(user.businessName){
-              console.log("I FOUND A BUSINESS NAME")
+     
                 req.session.businessName= user.businessName
                 req.session.logo= user.filename
             }else{
-              console.log("i didnt find a business name")
+   
               req.session.businessName= ""
               console.log(user.businessName)
             }
@@ -122,14 +104,8 @@ User.checkUsername(username).then((user)=>{
           error : error
         })
       })
-
-      }
-    })
-  }
 })
 
-
-})
 
 // localhost:3000/user/login
 router.post("/login", (req, res)=>{
