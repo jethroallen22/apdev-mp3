@@ -107,8 +107,6 @@ User.create(newUser).then((user)=>{
 })
 
 
-})
-
 // localhost:3000/user/login
 router.post("/login", (req, res)=>{
   console.log("POST /user/login")
