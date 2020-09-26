@@ -11,9 +11,10 @@ const mongoose = require("mongoose")
 const session = require("express-session")
 
 const app = express()
+mongodb+srv://jethroallen22:09064525156Jama_>@cluster0.r7vqz.gcp.mongodb.net/<helpinghand-db>?retryWrites=true&w=majority
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost:27017/helpinghand-db", {
+mongoose.connect("mongodb://localhost:3000/helpinghand-db", {
     useNewUrlParser: true
  })
 
