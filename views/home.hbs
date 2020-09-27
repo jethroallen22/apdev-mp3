@@ -35,8 +35,12 @@
         <div class="row" style="margin: 0px;width: 1186px;">
             <div class="col-md-2" style="background-color: #fafafa;"></div>
             <div class="col-md-8 d-xl-flex flex-column justify-content-xl-center align-items-xl-center" style="background-color: #fafafa;border-right: 1px none #dcdcdc;border-left: 1px none #dcdcdc;max-width: 100%;">
+                
+                
+                {{#each posts}}
+
                 <section style="width: 700px;height: 550px;margin: 20px;border: 1px solid #dbdbdb;padding-top: 10px;background-color: #ffffff;max-width: 100%;">
-                    <h1 style="padding: 0px 0px 0px 20px;font-size: 25px;"><img src="/css/assets/img/avatar.png" style="width: 50px;height: 50px;margin: 0px 10px;"><a href="/bprofile" id="link" style="color:black;">Food</a><button class="btn btn-primary float-right" onclick="copyClip()" type="button" style="width: 25px;height: 25px;padding: 0px;margin-top: 15px;margin-right: 20px;background: transparent;border-style: none;"><i class="fa fa-share float-right d-xl-flex align-items-xl-center" style="padding: 0px 0px 0px 0px;font-size: 25px;color: rgb(32,64,81);margin-top: 0px;margin-right: 0px;border-style: none;"></i></button>
+                    <h1 style="padding: 0px 0px 0px 20px;font-size: 25px;"><img src="/css/assets/img/Logo.png" style="width: 50px;height: 50px;margin: 0px 10px;"><a href="/bprofile" id="link" style="color:black;">{{business}}</a><button class="btn btn-primary float-right" onclick="copyClip()" type="button" style="width: 25px;height: 25px;padding: 0px;margin-top: 15px;margin-right: 20px;background: transparent;border-style: none;"><i class="fa fa-share float-right d-xl-flex align-items-xl-center" style="padding: 0px 0px 0px 0px;font-size: 25px;color: rgb(32,64,81);margin-top: 0px;margin-right: 0px;border-style: none;"></i></button>
                         <a
                             class="btn btn-primary btn-lg float-right" role="button" data-toggle="modal" href="#myModal" style="padding: 0px;background: transparent;border-style: none;width: 25px;height: 25px;margin-top: 15px;margin-right: 20px;"><i class="fa fa-send float-right d-xl-flex align-items-xl-center" style="padding: 0px 0px 0px 0px;font-size: 25px;color: rgb(32,64,81);margin-right: 0px;margin-top: 0px;"></i></a>
                     </h1>
@@ -67,32 +71,14 @@
                                 <div class="modal-footer"><button class="btn btn-light" data-dismiss="modal" type="button">Close</button><button class="btn btn-primary" type="button">Save</button></div>
                             </div>
                         </div>
-                    </div><img class="img-fluid" style="width: 696px;margin: 0;height:342.859px" src="/css/assets/img/food.jpg">
-                    <p style="padding: 0px 20px 0px 20px;text-align: justify;">Burger King (BK) is an American multinational chain of hamburger fast food restaurants. Headquartered in the unincorporated area of Miami-Dade County, Florida, the company was founded in 1953 as Insta-Burger King, a Jacksonville, Florida–based restaurant chain.<br></p>
+                    </div><img class="img-fluid" style="width: 696px;margin: 0;height:342.859px" src="/photo/{{_id}}">
+                    <p style="padding: 0px 20px 0px 20px;text-align: justify;">{{description}}<br></p>
                     <a
                         class="float-right" href="/profile" style="margin-right: 20px;color: #84a9ac;">Visit Now<i class="fa fa-angle-right" style="margin-left: 5px;"></i></a>
                 </section>
-                <section style="width: 700px;height: 550px;margin: 20px;border: 1px solid #dbdbdb;padding-top: 10px;background-color: #ffffff;">
-                    <h1 style="padding: 0px 0px 0px 20px;font-size: 25px;"><img src="/css/assets/img/avatar.png" style="width: 50px;height: 50px;margin: 0px 10px;"><a href="/bprofile" id="link" style="color:black;">Clothes</a><button class="btn btn-primary float-right" type="button" onclick="copyClip()" style="width: 25px;height: 25px;padding: 0px;margin-top: 15px;margin-right: 20px;background: transparent;border-style: none;"><i class="fa fa-share float-right d-xl-flex align-items-xl-center" style="padding: 0px 0px 0px 0px;font-size: 25px;color: rgb(32,64,81);margin-top: 0px;margin-right: 0px;border-style: none;"></i></button>
-                        <a
-                            class="btn btn-primary btn-lg float-right" role="button" data-toggle="modal" href="#myModal-1" style="padding: 0px;background: transparent;border-style: none;width: 25px;height: 25px;margin-top: 15px;margin-right: 20px;"><i class="fa fa-send float-right d-xl-flex align-items-xl-center" style="padding: 0px 0px 0px 0px;font-size: 25px;color: rgb(32,64,81);margin-right: 0px;margin-top: 0px;"></i></a>
-                    </h1>
-                    <div class="modal fade" role="dialog" tabindex="-1" id="myModal-1">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4>Modal Title</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                                <div class="modal-body">
-                                    <p class="text-center text-muted">Description </p>
-                                </div>
-                                <div class="modal-footer"><button class="btn btn-light" data-dismiss="modal" type="button">Close</button><button class="btn btn-primary" type="button">Save</button></div>
-                            </div>
-                        </div>
-                    </div><img class="img-fluid" style="width: 696px;margin: 0; height:342.859px" src="/css/assets/img/clothes.jpg">
-                    <p style="padding: 0px 20px 0px 20px;text-align: justify;">BENCH/ began in 1987 as a small store selling men's t-shirts. Then, it grew at an unparalleled rate becoming the pioneer in the use of celebrity endorsers, television, and giant billboards to propel a fashion brand that offers premium quality products at affordable prices.<br></p>
-                    <a
-                        class="float-right" href="/profile" style="margin-right: 20px;color: #84a9ac;">Visit Now<i class="fa fa-angle-right" style="margin-left: 5px;"></i></a>
-                </section>
+
+                {{/each}}
+
             </div>
             <div class="col-md-2" style="background-color: #fafafa;"></div>
         </div>

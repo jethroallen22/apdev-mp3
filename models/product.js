@@ -71,3 +71,13 @@ exports.edit = function(id, name, desc){
 
 
 }
+
+exports.allProds = function(){
+  return new Promise(function(resolve, reject){
+    Product.find({}).then((allProds)=>{
+      resolve(allProds)
+    }, (err)=>{
+      reject(err)
+    })
+  })
+}

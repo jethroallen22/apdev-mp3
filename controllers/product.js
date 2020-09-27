@@ -47,7 +47,17 @@ router.post("/deleteProd", (req, res)=>{
       }
     })
 
-    console.log(req.session.prods)
+
+    Product.allProds().then((allProds)=>{
+      req.session.feed = []
+
+
+      for(var i=0; i < allProds.length; i++){
+       
+        req.session.feed.push(allProds[i])
+      }
+
+    })
 
       res.render("bprofileEdit.hbs", {
         businessName: req.session.businessName,
@@ -59,6 +69,8 @@ router.post("/deleteProd", (req, res)=>{
         id: req.session.userID,
         logo: req.session.userID
     })
+
+    
 
   },(error)=>{
     res.render("bprofile.hbs", {
@@ -90,6 +102,19 @@ router.post("/addProduct", upload.single("addProduct"), (req, res)=>{
       console.log(req.session.prods)
       req.session.prods.push(product)
 
+
+      Product.allProds().then((allProds)=>{
+        req.session.feed = []
+  
+  
+        for(var i=0; i < allProds.length; i++){
+         
+          req.session.feed.push(allProds[i])
+        }
+  
+      })
+
+
       res.render("bprofileEdit.hbs", {
         businessName: req.session.businessName,
         completeName: req.session.completeName,
@@ -102,6 +127,8 @@ router.post("/addProduct", upload.single("addProduct"), (req, res)=>{
         id: req.session.userID,
         logo: req.session.userID
     })
+
+   
 
   },(error)=>{
     res.render("bprofile.hbs", {
@@ -116,9 +143,7 @@ router.post("/editProd", (req, res)=>{
   global.count=0
   let name = req.body.editName
   let desc = req.body.editDescription
-  console.log(name)
-  console.log(desc)
-  console.log(req.body.id)
+
 
   var editProduct = {
     business: req.session.businessName,
@@ -138,6 +163,19 @@ router.post("/editProd", (req, res)=>{
         req.session.prods.push(prods[i])
       }
     })
+
+
+    Product.allProds().then((allProds)=>{
+      req.session.feed = []
+
+
+      for(var i=0; i < allProds.length; i++){
+       
+        req.session.feed.push(allProds[i])
+      }
+
+    })
+
 
       res.render("bprofileEdit.hbs", {
         businessName: req.session.businessName,

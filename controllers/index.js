@@ -11,23 +11,25 @@ var MultiStream = require('multistream')
 router.use("/user", require("./user"))
 router.use("/product", require("./product"))
 
+const UPLOAD_PATH = path.resolve(__dirname, "../uploads")
+
+
 router.get("/", function(req, res){
     console.log("count is now" + req.session.count)
     global.count=0
-    var myProducts = new Array()
 
     if(req.session.username){
         console.log(req.session.username)
+        console.log(req.session.feed)
         res.render("home.hbs", {
-        businessName: req.session.businessName,
-        completeName: req.session.completeName,
-        username: req.session.username,
-        email: req.session.email,
-        contactno: req.session.contactno,
-        images: req.session.prods,
-        id: req.session.userID,
-
-        })
+            businessName: req.session.businessName,
+            completeName: req.session.completeName,
+            username: req.session.username,
+            email: req.session.email,
+            contactno: req.session.contactno,
+            posts: req.session.feed
+  
+          })
 
     }else{
         
@@ -86,4 +88,11 @@ router.get("/signout", (req, res) =>{
 })
 
 
+router.get("/photo/:id", (req, res)=>{
+    console.log(count)
+    fs.createReadStream(path.resolve(UPLOAD_PATH, (req.session.feed[count].filename).toString())).pipe(res)
+
+  global.count++
+  
+})
 module.exports = router

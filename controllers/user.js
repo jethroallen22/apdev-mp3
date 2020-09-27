@@ -27,9 +27,7 @@ const upload = multer({
 
 router.get("/photo/:id", (req, res)=>{
 
-  console.log("hello testing for profile logo")
 
-  console.log(req.session.logo)
     fs.createReadStream(path.resolve(UPLOAD_PATH, (req.session.logo).toString())).pipe(res)
 
   
@@ -70,7 +68,25 @@ if(!req.file){
 
 }
 
-User.create(newUser).then((user)=>{
+User.checkUsername(username).then((user)=>{
+  
+  if(user){
+    res.render("register.hbs", {
+      error: "Username already exists"
+  })
+  }
+  else{
+    User.checkEmail(email).then((user)=>{
+  
+      if(user){
+        res.render("register.hbs", {
+          error: "email already exists"
+      })
+      }
+      else{
+        console.log("you are clear 2")
+        
+        User.create(newUser).then((user)=>{
           console.log("successful " + user)
 
           console.log(user.businessName)
@@ -84,28 +100,55 @@ User.create(newUser).then((user)=>{
             req.session.prods = []
 
             if(user.businessName){
-     
+              console.log("I FOUND A BUSINESS NAME")
                 req.session.businessName= user.businessName
                 req.session.logo= user.filename
             }else{
-   
+              console.log("i didnt find a business name")
               req.session.businessName= ""
               console.log(user.businessName)
             }
     
           }
-          res.render("home.hbs", {
-            username: req.session.username,
 
-        })
+          Product.allProds().then((allProds)=>{
+            req.session.feed = []
+    
+    
+            for(var i=0; i < allProds.length; i++){
+             
+              req.session.feed.push(allProds[i])
+            }
+    
+            console.log(req.session.prods)
+    
+             res.render("home.hbs", {
+                businessName: req.session.businessName,
+                completeName: req.session.completeName,
+                username: req.session.username,
+                email: req.session.email,
+                contactno: req.session.contactno,
+                posts: req.session.feed,
+      
+              })
+    
+          })
+          
+
     
       },(error)=>{
         res.render("register.hbs", {
           error : error
         })
       })
+
+      }
+    })
+  }
 })
 
+
+})
 
 // localhost:3000/user/login
 router.post("/login", (req, res)=>{
@@ -143,15 +186,32 @@ router.post("/login", (req, res)=>{
           req.session.prods.push(prods[i])
         }
 
+      })
+
+      Product.allProds().then((allProds)=>{
+        req.session.feed = []
+
+
+        for(var i=0; i < allProds.length; i++){
+         
+          req.session.feed.push(allProds[i])
+        }
+
         console.log(req.session.prods)
 
-                  res.render("home.hbs", {
-                    username: req.session.username,
-                    id: req.session.prods,
-                 
-                  })
+         res.render("home.hbs", {
+            businessName: req.session.businessName,
+            completeName: req.session.completeName,
+            username: req.session.username,
+            email: req.session.email,
+            contactno: req.session.contactno,
+            posts: req.session.feed,
+  
+          })
 
       })
+
+
 
     }           //end of if new user
 
